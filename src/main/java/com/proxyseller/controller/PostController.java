@@ -28,12 +28,6 @@ public record PostController(PostService postService) {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PostResponse> editPost(@PathVariable String id,
-                                                 @Valid @RequestBody PostRequest request) {
-        return new ResponseEntity<>(postService.editPost(id, request), OK);
-    }
-
-    @PatchMapping("/{id}")
     public ResponseEntity<String> reactToPost(@PathVariable String id,
                                               @Valid @RequestBody LikeRequest request) {
         postService.manageLikes(id, request.action());

@@ -10,6 +10,7 @@ import com.proxyseller.repository.PostRepository;
 import com.proxyseller.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -41,16 +42,14 @@ public record PostServiceImpl(PostRepository postRepository,
     @Override
     public PostResponse createPost(PostRequest request) {
         var post = postMapper.mapRequestToModel(request);
+        var author = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
         post.setDateAdded(LocalDateTime.now());
         post.setNumberOfLikes(0);
+        post.setAuthor(author);
         log.info("Post created successfully");
-        return postMapper.mapModelToResponse(postRepository.save(post));
-    }
-
-    @Override
-    public PostResponse editPost(String id, PostRequest request) {
-        var post = getPost(id);
-        post.setText(request.text());
         return postMapper.mapModelToResponse(postRepository.save(post));
     }
 

@@ -14,7 +14,5 @@ public interface PostService {
 
     PostResponse createPost(PostRequest request);
 
-    PostResponse editPost(String id, PostRequest request);
-
     void manageLikes(String id, String action);
 }
