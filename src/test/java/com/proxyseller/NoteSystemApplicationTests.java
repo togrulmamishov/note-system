@@ -1,10 +1,10 @@
-package com.proxyseller.proxyseller;
+package com.proxyseller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProxySellerTaskApplicationTests {
+class NoteSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
