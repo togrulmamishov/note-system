@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "notes")
+@Document(collection = "posts")
 public class Post {
 
     @Id

@@ -1,4 +1,6 @@
 package com.proxyseller.dto;
 
-public record PostRequest(String text) {
+import jakarta.validation.constraints.NotNull;
+
+public record PostRequest(@NotNull String text) {
 }
