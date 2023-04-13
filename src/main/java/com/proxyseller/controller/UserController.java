@@ -22,7 +22,7 @@ public record UserController(UserService userService) {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> registerUser(@RequestBody UserRequest request) {
+    public ResponseEntity<UserResponse> registerUser(@Valid @RequestBody UserRequest request) {
         return new ResponseEntity<>(userService.registerUser(request), CREATED);
     }
 
